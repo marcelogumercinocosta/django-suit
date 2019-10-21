@@ -1,0 +1,32 @@
+{
+    "deepcode.review.results.hideInformationIssues": false,
+    "python.disableInstallationCheck": true, 
+    "python.pythonPath": "${workspaceFolder}/../env",
+    "python.linting.enabled": true,
+    "python.linting.pylintPath": "~/.local/bin/pylint",
+    "python.linting.pylintEnabled": true,
+    "python.linting.pylintArgs": [ "--load-plugins=pylint_django" ],
+    "python.formatting.provider": "autopep8",
+    "python.formatting.autopep8Path": "~/.local/bin/autopep8",
+    "python.formatting.autopep8Args": ["--max-line-length", "240", "--aggressive", "--aggressive", "--in-place"],
+    "[python]": {
+        "editor.formatOnSave": true,
+    },
+    "files.exclude": {
+                "**/.git": true,
+                "**/.svn": true,
+                "**/.hg": true,
+                "**/CVS": true,
+                "**/.DS_Store": true,
+                "**/*.pyc": true,
+                "**/__pycache__": true,
+                "**/vscode-svn": true,          
+    },
+    "editor.minimap.enabled": false,
+    "python.testing.pytestArgs": [
+        "suit"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.pytestEnabled": true,
+}

@@ -24,20 +24,14 @@ MEDIA_URL = ''
 SECRET_KEY = 'vaO4Y<g#YRWG8;Md8noiLp>.w(w~q_b=|1`?9<x>0KxA%UB!63'
 
 MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
-if django.VERSION < (1, 10):
-    MIDDLEWARE_CLASSES = MIDDLEWARE + [
-        'django.contrib.auth.middleware.AuthenticationMiddleware',
-    ]
-else:
-    MIDDLEWARE += [
-        'django.middleware.security.SecurityMiddleware',
-    ]
 
 ROOT_URLCONF = 'suit.tests.urls'
 
