@@ -54,8 +54,7 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
                 {'label': 'C7', 'url': '%s.book' % app_label},
                 {'app': app_label, 'models': []},
                 {'app': app_label, 'models': ['book', 'album']},
-                {'app': app_label, 'models': ['%s.book' % app_label,
-                                              '%s.album' % app_label]},
+                {'app': app_label, 'models': ['%s.book' % app_label, '%s.album' % app_label]},
                 {'app': app_label, 'models': [
                     'book', '%s.book' % app_label,
                     {
@@ -96,21 +95,6 @@ class SuitMenuTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
 
     def make_menu_from_response(self):
         return get_menu(self.response.context[-1], self.response._request)
-
-    def test_menu_search_url_formats(self):
-        # Test named url as defined in setUp config
-        settings.SUIT_CONFIG['SEARCH_URL'] = 'admin:%s_book_changelist' \
-                                             % app_label
-        admin_root = reverse('admin:index')
-        self.get_response()
-        self.assertContains(self.response,
-                            'action="%s%s/book/"' % (admin_root, app_label))
-
-        # Test absolute url
-        absolute_search_url = '/absolute/search/url'
-        settings.SUIT_CONFIG['SEARCH_URL'] = absolute_search_url
-        self.get_response()
-        self.assertContains(self.response, absolute_search_url)
 
     def test_menu(self):
         mc = settings.SUIT_CONFIG['MENU']

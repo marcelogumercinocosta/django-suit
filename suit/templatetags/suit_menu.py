@@ -1,34 +1,18 @@
+import re
+import warnings
 import django
 from django import template
 from django.contrib import admin
 from django.contrib.admin import AdminSite
 from django.http import HttpRequest
-
-try:
-    from django.core.urlresolvers import reverse, resolve
-except ImportError:
-    # For Django >= 2.0
-    from django.urls import reverse, resolve
-
-try:
-    from django.utils.six import string_types
-except ImportError:
-    # For Django < 1.4.2
-    string_types = basestring,
-
-import re
-import warnings
-from suit.config import get_config
+from django.urls import resolve, reverse
+from django.utils.six import string_types
 from suit import utils
+from suit.config import get_config
 
 register = template.Library()
-
 django_version = utils.django_major_version()
-
-if django_version < (1, 9):
-    simple_tag = register.assignment_tag
-else:
-    simple_tag = register.simple_tag
+simple_tag = register.simple_tag
 
 
 @simple_tag(takes_context=True)
@@ -193,8 +177,7 @@ class Menu(object):
 
 
     def app_is_forbidden(self, app):
-        return app['permissions'] and \
-               not self.user_has_permission(app['permissions'])
+        return app['permissions'] and not self.user_has_permission(app['permissions'])
 
     def app_is_excluded(self, app):
         return self.conf_exclude and app['name'] in self.conf_exclude
@@ -378,15 +361,13 @@ class Menu(object):
             return model
 
     def model_is_forbidden(self, model):
-        return model['permissions'] and \
-               not self.user_has_permission(model['permissions'])
+        return model['permissions'] and not self.user_has_permission(model['permissions'])
 
     def process_semi_native_model(self, model, app_name):
         """
         Process app defined as { model: 'model' }
         """
-        model_from_native = self.make_model_from_native(model['model'],
-                                                        app_name)
+        model_from_native = self.make_model_from_native(model['model'], app_name)
         if model_from_native:
             del model['model']
             model_from_native.update(model)
@@ -423,8 +404,7 @@ class Menu(object):
 
             # Mark as active by url match
             if not self.app_activated \
-                and (self.request.path == app['url']
-                     or self.request.path == app.get('orig_url')):
+                and (self.request.path == app['url'] or self.request.path == app.get('orig_url')):
                 app['is_active'] = self.app_activated = True
 
         if not self.app_activated:
@@ -441,8 +421,7 @@ class Menu(object):
                 # Mark as active by url or model plural name match
                 model['is_active'] = self.request.path == model['url']
             else:
-                model['is_active'] = self.ctx_model_plural == model[
-                    'label'].lower()
+                model['is_active'] = self.ctx_model_plural == model['label'].lower()
 
             # Mark parent as active too
             if model['is_active'] and not self.app_activated:

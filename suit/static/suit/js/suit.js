@@ -29,7 +29,7 @@
         $(this).each(function () {
             // extra_offset: 70 (60 Footer height + 10 top offset)
             var $fixed_item = $(this), pos = $fixed_item.offset(), extra_offset = 70;
-            $(window).bind('scroll.sl resize.sl load.sl', function (e) {
+            $(window).on('scroll.sl resize.sl load.sl', function (e) {
                 var $win = $(this), scroll_top = $win.scrollTop();
                 if ($fixed_item.height() < $win.height() &&
                     scroll_top > (pos.top - 10) &&
@@ -176,7 +176,7 @@
             submitting = true;
             $saveButtons.addClass('disabled');
 
-            setTimeout(function () {
+            setTimeout(()  => {
                 $saveButtons.removeClass('disabled');
                 submitting = false;
             }, 5000);
@@ -196,4 +196,4 @@
 
     });
 
-}(Suit.$));
+});

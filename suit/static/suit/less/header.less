@@ -1,8 +1,14 @@
-.header { //  border-top: 1px solid #494d4f;
-    color: #d4d4d4;
-    height: @header-height;
+.header { 
     overflow: hidden;
-    text-shadow: 0 -1px #121414;
+    background-color: #2196F3;
+    color: #fff;
+    box-shadow: 0 5px 5px -5px #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 800;
+    margin-right: 0px;
+    margin-left: 0px;
 
     .header-content {
         float: left;
@@ -13,8 +19,9 @@
         overflow: hidden;
 
         &.header-content-first {
-            border-left: 1px solid #45494c;
-            margin-right: 20px;
+            padding: 30px 0 0 40px;
+            height: 100%;
+            margin-right: 0px;
         }
 
         .time {
@@ -34,7 +41,7 @@
     #branding {
         height: @header-height;
         float: left;
-        min-width: @left-column-width;
+        min-width: 200px;
         border-right: 1px solid #2f3334;
 
         h1 {
@@ -57,10 +64,10 @@
     }
 
     a {
-        color: #92D1EE;
+        color: #fff;
         text-decoration: none;
         &:hover {
-            text-decoration: underline;
+            text-decoration: none;
         }
         &.grey {
             color: #d4d4d4;
@@ -68,22 +75,20 @@
     }
 
     #user-tools {
-        padding: 12px 20px 0 0;
-        float: right;
+        padding: 0px 30px 10px 10px;
         .user-links {
             display: inline-block;
             margin-left: 15px;
         }
         .separator {
-            color: #999;
+            color: #fff;
             display: inline-block;
             margin: 0 5px;
         }
     }
 
     i { //  Switch to inverse icons
-        background-image: url(../img/glyphicons-halflings-white-nav.png);
+        font-size: 18px;
     }
 
-    .horizontal-gradient(@header-bgcolor-1, @header-bgcolor-2);
 }

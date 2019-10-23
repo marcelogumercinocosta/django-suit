@@ -18,24 +18,21 @@ class ConfigTestCase(UserTestCaseMixin):
         except AttributeError:
             pass
         default_suit_config = default_config()
-        self.assertEqual(get_config('ADMIN_NAME'),
-                         default_suit_config['ADMIN_NAME'])
+        self.assertEqual(get_config('ADMIN_NAME'), default_suit_config['ADMIN_NAME'])
 
         # Defined as None, should also use fallback
         admin_name = None
         settings.SUIT_CONFIG = {
             'ADMIN_NAME': admin_name
         }
-        self.assertEqual(get_config('ADMIN_NAME'),
-                         default_suit_config['ADMIN_NAME'])
+        self.assertEqual(get_config('ADMIN_NAME'), default_suit_config['ADMIN_NAME'])
 
     def test_suit_config_when_defined_but_no_key(self):
         settings.SUIT_CONFIG = {
             'RANDOM_KEY': 123
         }
         default_suit_config = default_config()
-        self.assertEqual(get_config('ADMIN_NAME'),
-                         default_suit_config['ADMIN_NAME'])
+        self.assertEqual(get_config('ADMIN_NAME'), default_suit_config['ADMIN_NAME'])
         # Defined as empty, should stay empty
         admin_name = ''
         settings.SUIT_CONFIG = {
@@ -83,10 +80,9 @@ class ConfigWithModelsTestCase(ModelsTestCaseMixin, UserTestCaseMixin):
         book = self.create_book()
 
         response = self.client.get(admin_url(book))
-        content_if_true = ".required:after { content: '*';"
+        content_if_true = "suit/css/suit.css"
         self.assertContains(response, content_if_true)
 
-        # Test without confirm
-        settings.SUIT_CONFIG['SHOW_REQUIRED_ASTERISK'] = False
         response = self.client.get(admin_url(book))
-        self.assertNotContains(response, content_if_true)
+        content_if_true = "suit/js/suit.js"
+        self.assertContains(response, content_if_true)

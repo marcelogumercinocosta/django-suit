@@ -26,13 +26,22 @@
 @import 'ui/datepicker';
 @import 'ui/tabs';
 
+
 body {
-    background-color: @bgcolor;
-    min-width: 960px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    background-color: @wite;
     &.popup {
         min-width: inherit;
     }
 }
+
+
 
 #wrap {
     background: url(../img/bg_left_white.gif) top left repeat-y;
@@ -42,7 +51,7 @@ body {
 }
 
 a {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 a:hover {
@@ -63,10 +72,14 @@ a.btn {
     text-decoration: none;
 }
 
+h1,h2,h3,h4,h5,h6 {
+    text-shadow: none;
+}
+
 // White shadow
 #content {
     h1, h2, h3, h4, alert {
-        .white-shadow;
+        text-shadow: none;
     }
 }
 
@@ -88,7 +101,7 @@ a.btn {
         }
     }
     .inner-center-column {
-        margin-right: (@right-column-width + 20px);
+        margin-right: 200px;
         .tab-content {
             overflow: inherit;
             margin-bottom: 15px;
@@ -143,8 +156,8 @@ h1, h2, h3, h4, h5, h6 {
 h2 {
     font-weight: bold;
     font-size: 16px;
-    line-height: 24px;
-    margin: 0 0 0 10px;
+    line-height: 26px;
+    margin: 0px;
 }
 
 a.append-icon i {
@@ -162,13 +175,19 @@ a.append-icon i {
 
 .errorlist {
     color: @red;
+    padding: 5px 0 0 0;
+    li {
+        list-style: none;
+        padding: 0px;
+        margin: 0px;
+    }
 }
 
 /* Column layout */
 @cc-padding: (@padding * 2);
 .suit-columns {
-    display: flex;
-    padding-left: @left-column-width; /* LC fullwidth */
+    padding-left: 0px;
+    padding-right: 0px;
     .suit-column {
         position: relative;
         float: left;
@@ -182,22 +201,27 @@ a.append-icon i {
     }
 }
 #suit-center {
-    padding: @padding; /* CC padding */
+    padding: 70px 20px 20px 20px;
     width: 100%;
     .popup & {
         width: 94.9%;
         padding-bottom: 0;
     }
+    .espaco-menu {
+        padding-left: 270px;
+    }
 }
 #suit-left {
-    width: @left-column-width; /* LC width */
-    right: (@left-column-width + @cc-padding); /* LC fullwidth + CC padding */
-    margin-left: -100%;
+    z-index: 999;
+    width: 100%;
+    right: 0px;
+    margin-left: 0;
+    border-top: 4px solid #03a9f4;
 }
 #suit-right {
-    width: 130px; /* RC width */
-    padding: 0 10px; /* RC padding */
-    margin-right: -190px; /* RC fullwidth + CC padding */
+    width: 130px;
+    padding: 0 10px;
+    margin-right: -190px
 }
 
 #push {

@@ -15,7 +15,7 @@ var confirmExitIfModified = (function () {
         for (var i = 0; i < form.elements.length; i++) {
             var element = form.elements[i];
             var type = element.type;
-            if (type == "checkbox" || type == "radio") {
+            if (type === "checkbox" || type == "radio") {
                 if (element.checked != element.defaultChecked) {
                     return true;
                 }
@@ -26,9 +26,9 @@ var confirmExitIfModified = (function () {
                 if (!cls) cls = '';
                 if (element.value != element.defaultValue &&
                     // Fix for select2 multiple
-                    cls.indexOf('select2') == -1 &&
+                    cls.indexOf('select2') === -1 &&
                     // Skip elements with ignore-changes class
-                    cls.indexOf('ignore-changes') == -1
+                    cls.indexOf('ignore-changes') === -1
                     ) {
                     return true;
                 }

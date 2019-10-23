@@ -17,7 +17,7 @@ class LessCompiler(FileSystemEventHandler):
             destination = self.source.replace('less', 'css')
         else:
             destination = sys.argv[2]
-        cmd = 'lessc %s > %s -x' % (source, os.path.abspath(destination))
+        cmd = 'lessc %s > %s --clean-css="--s1 --advanced --compatibility=ie8"' % (source, os.path.abspath(destination))
         print(cmd)
         os.system(cmd)
 

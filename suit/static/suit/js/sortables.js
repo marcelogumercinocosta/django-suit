@@ -105,7 +105,7 @@
 
         // Filters out unchanged checkboxes, selects and sortable field itself
         function filter_unchanged(i, input) {
-            if (input.type == 'checkbox') {
+            if (input.type === 'checkbox') {
                 if (input.defaultChecked == input.checked) {
                     return false;
                 }
