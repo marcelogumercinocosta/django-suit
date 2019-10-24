@@ -3,7 +3,7 @@
     font-size: 14px;
     padding: 8px 15px 8px 10px;
     margin: -5px 0 15px;
-    background-color: #2196F3 !important;
+    background-color: @blue_header !important;
     color: #fff;
     &>a {
         display: inline-block;
@@ -11,8 +11,8 @@
         text-shadow: 0 1px 0 #ffffff;
         font-weight: normal;
         &>.divider {
-            padding: 0 5px;
-            color: #ccc;
+            padding: 10px;
+            color: @footer-bgcolor;
         }
         &>.active {
             font-weight: bold;
@@ -33,11 +33,12 @@
     margin: 0px 5px 0px 25px;
     font-size: 16px;
     color: #fff;
-    background-color: #2196F3 !important;
+    background-color: @blue_header !important;
     padding: 15px 0px 0px 0px;
     li {
         a {
             text-decoration: none;
+            padding: 0px 5px;
             &:hover {
                 text-decoration: none;
             }
@@ -46,6 +47,7 @@
             font-size: 1.68rem;
             font-weight: 300;
             color: #fff;
+            padding: 0px 5px;
             margin-top: -5px;
         }
     }

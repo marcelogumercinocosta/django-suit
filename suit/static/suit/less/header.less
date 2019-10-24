@@ -1,6 +1,6 @@
-.header { 
+.header {
     overflow: hidden;
-    background-color: #2196F3;
+    background-color: @blue_header;
     color: #fff;
     box-shadow: 0 5px 5px -5px #333;
     position: fixed;
@@ -9,6 +9,21 @@
     z-index: 800;
     margin-right: 0px;
     margin-left: 0px;
+
+    .sidebar-header {
+        min-width: 250px;
+        max-width: 250px;
+        background: @blue_sidebar;
+        color: #fff;
+        transition: all 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);
+        h1 {
+            font-family: 'Do Hyeon', sans-serif;
+            text-shadow: none;
+            text-align: center;
+            color: #fff;
+            margin: 0px;
+        }
+    }
 
     .header-content {
         float: left;
@@ -31,6 +46,7 @@
 
         .header-column {
             float: left;
+
             i {
                 margin-right: 10px;
             }
@@ -54,10 +70,11 @@
 
         a {
             text-decoration: none;
+
             &:hover {
                 h1 {
                     text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
-//                    text-shadow: none;
+                    //                    text-shadow: none;
                 }
             }
         }
@@ -66,9 +83,11 @@
     a {
         color: #fff;
         text-decoration: none;
+
         &:hover {
             text-decoration: none;
         }
+
         &.grey {
             color: #d4d4d4;
         }
@@ -76,10 +95,12 @@
 
     #user-tools {
         padding: 0px 30px 10px 10px;
+
         .user-links {
             display: inline-block;
             margin-left: 15px;
         }
+
         .separator {
             color: #fff;
             display: inline-block;
@@ -87,7 +108,8 @@
         }
     }
 
-    i { //  Switch to inverse icons
+    i {
+        //  Switch to inverse icons
         font-size: 18px;
     }
 

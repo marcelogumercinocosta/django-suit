@@ -2,9 +2,16 @@ h2.legend, .form-horizontal fieldset .legend {
     font-weight: bold;
     font-size: 16px;
     line-height: 26px;
-    text-shadow: 0 1px rgba(255, 255, 255, 0.5);
-    padding-left: 10px
+    padding-left: 10px;
+    border-bottom: 1px solid @blue_sidebar;
+    color:  @blue_sidebar;
+    font-family: "Roboto", sans-serif;
+    margin-bottom: 1.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+
 }
+
 .form-horizontal {
     fieldset {
         display: table;
@@ -20,10 +27,9 @@ h2.legend, .form-horizontal fieldset .legend {
         .legend {
             border: 0;
             margin: 0px 0 0 0;
-            position: absolute;
             top: 0;
             width: 100%;
-            color: #0d47a1;
+            color: @blue_sidebar;
             white-space: nowrap;
             overflow: hidden;
             padding-top: 5px;
@@ -262,7 +268,6 @@ h2.legend, .form-horizontal fieldset .legend {
     }
     .add-related, .related-lookup, .change-related {
         .bs-icon;
-        display: inline-block;
         padding: 4px;
         border: 1px solid transparent;
         padding-left: 6px;
@@ -400,8 +405,8 @@ h3 {
                     top: 0;
                     white-space: nowrap;
                     overflow: hidden;
-                    color: #0d47a1;
-                    border-bottom: 1px solid #0d47a1;
+                    color: @blue_sidebar;
+                    border-bottom: 1px solid @blue_sidebar;
                 }
             }
             table {
@@ -704,4 +709,59 @@ h3 {
 .inline-group > div:nth-last-child(3) .stacked-inline-sortable .sortable-down {
     opacity: .15 !important;
     cursor: default;
+}
+
+.control-label {
+	text-align: right;
+	vertical-align: middle;
+}
+
+.form-horizontal .control-group .controls input[type="text"], .form-horizontal .control-group .controls input[type="number"], .form-horizontal .control-group .controls input[type="email"], .form-horizontal .control-group .controls select, .form-horizontal .control-group .controls textarea  {
+	width: 90%;
+}
+
+.form-horizontal {
+	.control-group {
+		.controls {
+			input[type="checkbox"] {
+				width: 20px;
+			}
+			input[type="text"].vDateField {
+				margin-bottom:5px;
+				width:30%;
+			}
+			input[type="text"].vTimeField {
+				margin-bottom:5px;
+				width:30%;
+			}
+		}
+		input[type="text"].help-block {
+			&:after {
+				clear: right;
+				content: ' ';
+				display: block;
+			}
+		}
+		input[type="text"].help-inline {
+			&:after {
+				clear: right;
+				content: ' ';
+				display: block;
+			}
+		}
+	}
+}
+.form-row {
+	display: table-row;
+	input[type="checkbox"] {
+		margin-top: 10px;
+		&:parent {
+			background-color: red;
+			text-align: center;
+		}
+	}
+}
+.form-row input[type="text"], .form-row input[type="number"], .form-row input[type="url"], .form-row input[type="email"], .form-row select  {
+	line-height: 26px;
+	width:100%;
 }

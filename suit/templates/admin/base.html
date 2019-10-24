@@ -23,22 +23,15 @@
       {% block header %}
         <div id="header" class="header row ">
           <div class="sidebar-header">
-            <a href="{% if user.is_authenticated %} {% url 'admin:index' %} {% else %}  {% url 'home' %} {% endif %}" class="sidebarCollapse ">
-              <h1 id="site-name">{% block branding %}{{ 'ADMIN_NAME'|suit_conf }}{% endblock %}</h1>
+            <a href="{% if user.is_authenticated %} {% url 'admin:index' %} {% else %}/{% endif %}" class="sidebarCollapse ">
+              <h1 id="site-name" >{% block branding %}{{ 'ADMIN_NAME'|suit_conf }}{% endblock %}</h1>
             </a>
           </div>
-          {% block breadcrumbs %}
-            <ul class="breadcrumb">
-              <li><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
-                {% if title %}
-                    <span class="divider">|</span>
-                  </li>
-                  <li class="active">
-                    {{ title }}
-                {% endif %}
-              </li>
-            </ul>
-          {% endblock %}
+          {% if not is_popup %}
+            {% block breadcrumbs %}
+              {% include "admin/includes/breadcrumbs.html" with nivel=0  %}
+            {% endblock %}
+          {% endif %}
           {% block header_content %} {% endblock %}
           <div id="user-tools" class="text-right col align-self-end">
             {% if user.is_active and user.is_staff %}

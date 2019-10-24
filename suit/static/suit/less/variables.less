@@ -7,12 +7,14 @@
 
 // Colors
 @grey: #999;
-@red: #b94a48;
-@blue: #08c;
+@red: #dc3545;
+@blue: #2196F3;
+@blue_header: #2196F3;
+@blue_sidebar: #0d47a1;
+@grey-light: #F2F2F2;
+
 
 // Header
-@header-bgcolor-1: #3f4345;
-@header-bgcolor-2: #373b3d;
 @header-height: 45px;
 
 @left-column-width: 200px;
@@ -40,12 +42,33 @@
 .auto-width { width: auto }
 .clear { clear: both; }
 .hide-text { text-indent: 200%; white-space: nowrap; overflow: hidden; }
+
+
+h1.site-name-branco {
+    font-family: 'Do Hyeon', sans-serif;
+    padding: 8px 0 2px 0;
+    margin: 0px;
+    text-shadow: none;
+    text-align: center;
+    color: #fff;
+}
+
+h1.site-name-azul {
+    font-family: 'Do Hyeon', sans-serif;
+    padding: 8px 0 2px 0;
+    margin: 0px;
+    text-shadow: none;
+    text-align: center;
+    color: @blue_sidebar;
+}
+
+
 .bs-icon {
     .hide-text;
     display: inline-block;
     width: 14px;
     height: 14px;
-    background-image: url("../bootstrap/img/glyphicons-halflings.png");
+    background-image: url("../img/glyphicons-halflings.png");
     background-position: 0 -96px;
     background-repeat: no-repeat;
     opacity: .75;
@@ -54,3 +77,66 @@
         opacity: 1;
     }
 }
+
+select {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: @blue_sidebar;
+	background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right .75rem center/8px 10px;
+	border-radius: .25rem;
+	border: 1px solid @footer-bgcolor;
+	color: #495057;
+	display: inline-block;
+	font-size: 1rem;
+	font-weight: 400;
+	height: calc(1.5em + .75rem + 2px);
+	line-height: 1.5;
+	padding: .275rem 1.75rem .375rem .75rem;
+	vertical-align: middle;
+}
+input[type="text"], input[type="number"], input[type="url"], input[type="email"], input[type="text"].vDateField, input[type="text"].vTimeField  {
+	border-radius: .25rem;
+	border: 1px solid @footer-bgcolor;
+	font-size: 1rem;
+	line-height: 26px;
+	padding: .175rem 1.75rem .175rem .75rem;
+}
+input[type="number"] {
+	padding: .175rem 0rem .175rem .75rem;
+}
+
+
+.shadow-menu {
+	box-shadow: 0 5px 5px -5px @text-color!important;
+}
+.shadow-sidebar {
+	box-shadow: 5px 0 5px -5px @text-color;
+}
+
+.linha-top {
+	border-top: 1px solid @blue_sidebar;
+	margin: 0px;
+	padding-top:10px;
+}
+
+
+label {
+	margin-bottom: 0px;
+	margin-left: 5px;
+}
+div.error {
+	color: @red;
+	font-size: 12px;
+	padding-left: 5px;
+	padding-top: 5px;
+}
+.help-block {
+	strong {
+		color: @red;
+		font-size: 80%;
+		margin-top: .25rem;
+		width: 100%;
+	}
+}
+

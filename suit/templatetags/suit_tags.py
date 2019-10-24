@@ -117,3 +117,25 @@ def str_to_version(string):
 def get_menu_tree(path):
     array_path = path.split('/')
     return ('/'.join(array_path[0:4]) + "/").replace("//", "/")
+
+@register.filter
+def get_for_one_string(fields_list):
+    return ' | '.join(x.capitalize().replace("_", " ") for x in fields_list)
+
+
+@register.filter
+def get_for_two_string(lista):
+    result = []
+    for fildset_type, fildset in lista:
+        for field in fildset['fields']:
+            result.append(field)
+    return ' | '.join(x.capitalize().replace("_", " ") for x in result)
+
+
+@register.filter
+def get_for_two_count(lista):
+    result = 0
+    for lista_int in lista:
+        for _int in lista_int:
+            result += 1
+    return result

@@ -1,49 +1,78 @@
 .login {
-    #wrap {
-        background: none;
+    .loginbox {
+        margin-top: 5%;
+        border-left: 6px solid @blue_sidebar;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 10px 10px -2px rgba(0, 0, 0, 0.12), 0 -2px 10px -2px rgba(0, 0, 0, 0.12);
     }
-    #content-main {
-        margin: 0;
-        padding: 0;
-        .grey-box-shadow;
-        border-radius: @border-radius;
-        background: white;
-        padding: 0;
-    /* Position hor/ver center */
-        position: absolute;
-        width: 340px;
-        left: 50%;
-        top: 35%;
-        margin-left: -170px; /* Half the width of the DIV tag */
-        margin-top: -100px; /* Half the height of the DIV tag */
-        h1 {
-            font-size: 16px;
-            font-weight: normal;
-            background-color: #2196F3;
-            color: #fff;
-            text-shadow: 0 1px #4f7f92;
-            padding: 15px;
-            margin: 0;
-            i {
-                margin-right: 5px;
-            }
-        }
-        form {
-            margin: 15px 15px 0;
-            input[type=text], input[type=password] {
-                width: 90%;
-            }
-        }
-        .submit-row {
-            background: @bgcolor-light;
-            margin: 10px -15px 0;
-            padding: 10px 15px;
-            border-top: 1px solid #eee;
-            .white-inset;
-            .border-radius(null, null, @border-radius, @border-radius);
-        }
-        .control-group {
-            border: 0;
-        }
+
+    .submitButton {
+        background-color: @blue_header;
+        color: #fff;
+        margin-top: 12px;
+        margin-bottom: 10px;
+        padding: 10px 0px;
+        width: 100%;
+        margin-left: 2px;
+        font-size: 16px;
+        border-radius: 0px;
+        outline: none;
+    }
+    
+    .submitButton:hover,
+    .submitButton:focus {
+        color: #fff;
+        outline: none;
+    }
+    
+    .forGotPassword {
+        background-color: @grey-light;
+        padding: 15px 0px;
+        text-align: center;
+        border-left: 6px solid @blue_sidebar;
+        font-size: 12px;
+        box-shadow: 0 10px 10px -2px rgba(0, 0, 0, 0.12);
+    
+    }
+    
+    .forGotPassword a:hover {
+        color: @red;
+        text-decoration: bold;
+    }
+    
+    .forGotPassword:hover {
+        background-color: @footer-bgcolor;
+    }
+    
+    .forGotPassword a {
+        color: #000;
+        outline: none;
+    }
+    
+    .forGotPassword a:hover,
+    .forGotPassword a:active,
+    .forGotPassword a:focus {
+        text-decoration: none;
+        outline: none;
+    }
+
+    input[type=text],
+    input[type=password],
+    input[type=email] {
+        height: 40px;
+        width: 80%;
+    }
+
+    .bd-callout {
+        padding: 1.25rem;
+        margin-top: 1.25rem;
+        margin-bottom: 1.25rem;
+        border: 1px solid @footer-bgcolor;
+        border-radius: .25rem;
+    }
+    
+    .bd-callout-danger {
+        border-left: 6px solid @red;
     }
 }
