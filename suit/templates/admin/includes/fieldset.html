@@ -37,7 +37,7 @@
             {% if not field.is_readonly and field.errors %}<div class="inline error errors">{% endif %}
 
             {# If multi-fields and wrap controls too #}
-             {% if not singlefield %}
+            {% if not singlefield %}
                 <div class="multi-field-controls">
               {% endif %}
 
@@ -67,8 +67,8 @@
             {% if not field.is_readonly and field.errors %}</div>{% endif %}
 
             {% if not singlefield %}
-             </div> {# close multi-controls #}
-             </div> {# close multi-field-box #}
+            </div> {# close multi-controls #}
+            </div> {# close multi-field-box #}
             {% endif %}
 
             {% if forloop.last %}

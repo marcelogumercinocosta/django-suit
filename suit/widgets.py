@@ -149,14 +149,13 @@ class SuitSplitDateTimeWidget(forms.SplitDateTimeWidget):
     """
     A SplitDateTime Widget that has some admin-specific styling.
     """
-
     def __init__(self, attrs=None):
         widgets = [SuitDateWidget, SuitTimeWidget]
         forms.MultiWidget.__init__(self, widgets, attrs)
 
     if django_version < (1, 11):
         def format_output(self, rendered_widgets):
-            out_tpl = '<div class="datetime">%s %s</div>'
+            out_tpl = '<div class="datetime" >%s %s</div>'
             return mark_safe(out_tpl % (rendered_widgets[0], rendered_widgets[1]))
     else:
         def render(self, name, value, attrs=None, renderer=None):

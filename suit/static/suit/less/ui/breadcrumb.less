@@ -4,7 +4,7 @@
     padding: 8px 15px 8px 10px;
     margin: -5px 0 15px;
     background-color: @blue_header !important;
-    color: #fff;
+    color: @footer-bgcolor;
     &>a {
         display: inline-block;
         padding: 0 3px;
@@ -12,7 +12,7 @@
         font-weight: normal;
         &>.divider {
             padding: 10px;
-            color: @footer-bgcolor;
+            color: @grey;
         }
         &>.active {
             font-weight: bold;
@@ -21,18 +21,11 @@
     }
 }
 
-.breadcrumbs > a > .divider {
-}
-
-.breadcrumbs > .active {
-    color: #999999;
-}
-
 /* NEW CLASS based on BS */
 .breadcrumb {
     margin: 0px 5px 0px 25px;
     font-size: 16px;
-    color: #fff;
+    color: @footer-bgcolor;
     background-color: @blue_header !important;
     padding: 15px 0px 0px 0px;
     li {
@@ -49,6 +42,10 @@
             color: #fff;
             padding: 0px 5px;
             margin-top: -5px;
+        }
+        .divider {
+            padding: 5px;
+            color: @grey-light;
         }
     }
     &.toplinks {

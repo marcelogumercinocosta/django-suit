@@ -129,10 +129,11 @@ h2.legend, .form-horizontal fieldset .legend {
             vertical-align: top;
             float: none;
             background-color: @bgcolor-light;
-            border-left: 1px solid #ecedee;
+            border-left: 1px solid @border-color-light;
             padding: 5px 15px;
             width: 100%;
             line-height: 26px;
+            border-bottom: 1px solid @border-color-light;
             p {
                 margin-bottom: 0;
             }
@@ -186,7 +187,6 @@ h2.legend, .form-horizontal fieldset .legend {
         /* Inline forms fields */
         .field-box .controls {
             label {
-                float: left;
                 display: inline-block;
                 margin: 5px 10px 0 0;
                 &.required {
@@ -241,8 +241,6 @@ h2.legend, .form-horizontal fieldset .legend {
     }
 }
 .popup {
-    .form-horizontal {
-    }
     .one-column {
         padding-top: 10px;
     }
@@ -727,12 +725,12 @@ h3 {
 				width: 20px;
 			}
 			input[type="text"].vDateField {
-				margin-bottom:5px;
-				width:30%;
+				margin-bottom:0px;
+				width:20%;
 			}
 			input[type="text"].vTimeField {
-				margin-bottom:5px;
-				width:30%;
+				margin-bottom:0px;
+				width:20%;
 			}
 		}
 		input[type="text"].help-block {
@@ -756,12 +754,16 @@ h3 {
 	input[type="checkbox"] {
 		margin-top: 10px;
 		&:parent {
-			background-color: red;
+			background-color:@red;
 			text-align: center;
 		}
-	}
+    }
+    input[type="text"], .form-row input[type="number"], .form-row input[type="url"], .form-row input[type="email"], .form-row select  {
+        line-height: 26px;
+        width:100%;
+    }
 }
-.form-row input[type="text"], .form-row input[type="number"], .form-row input[type="url"], .form-row input[type="email"], .form-row select  {
-	line-height: 26px;
-	width:100%;
+
+select.selectfilter {
+    height: 400px!important;
 }

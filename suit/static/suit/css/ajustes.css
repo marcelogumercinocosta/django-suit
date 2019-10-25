@@ -28,9 +28,7 @@
 .w-15 {
 	width: 15%;
 }
-select[name=permissions_old] {
-	height: 400px!important;
-}
+
 #id_permissions_to {
 	height: 445px!important;
 }
