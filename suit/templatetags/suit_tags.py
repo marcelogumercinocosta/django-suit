@@ -139,3 +139,7 @@ def get_for_two_count(lista):
         for _int in lista_int:
             result += 1
     return result
+
+@register.filter
+def concatene(value1,value2):
+    return str(value1) + " " + str(value2)

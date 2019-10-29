@@ -4,38 +4,47 @@
 
 {% if nivel == 1 %}
     <ul class="breadcrumb">
-        <li><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
-            {% if title %}
-            <span class="divider">/</span>
-        </li>
-        <li class="active">
-            {{ title }}
-            {% endif %}
-        </li>
-    </ul>
-{% endif %}
-{% if nivel == 2 %}
-    <ul class="breadcrumb">
       <li><a href="{% url 'admin:index' %}">{% trans 'Home' %} </a>
         <span class="divider">/</span></li>
-      <li class="active">{{ cl.opts.verbose_name_plural|capfirst }}</li>
+      <li class="active">{{breadcrumbs_action|capfirst }}</li>
     </ul>
 {% endif %}
+
+
+{% if nivel == 2 %}
+  <ul class="breadcrumb">
+      <li>
+        <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+        <span class="divider">/</span>
+      </li>
+      <li>
+        <a href="{% url opts|admin_urlname:'changelist' %}"> {{ opts.verbose_name_plural|capfirst }} </a>
+        <span class="divider">/</span>
+      </li>
+      <li class="active">
+          {{breadcrumbs_action|capfirst|truncatewords:"25" }}
+      </li>
+    </ul>
+{% endif %}
+
 {% if nivel == 3 %}
-<ul class="breadcrumb">
-  <li>
-    <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
-    <span class="divider">/</span>
-  </li>
-  <li>
-    {% if has_change_permission %}
-    <a href="{% url opts|admin_urlname:'changelist' %}">
-      {{ opts.verbose_name_plural|capfirst }}</a>{% else %}
-    {{ opts.verbose_name_plural|capfirst }}{% endif %}
-    <span class="divider">/</span>
-  </li>
-  <li class="active">
-    {% if add %}{% trans 'Add' %} {{ opts.verbose_name }}{% else %}{{ original|truncatewords:"18" }}{% endif %}
-  </li>
-</ul>
+    <div class="breadcrumb">
+      <li>
+        <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+        <span class="divider">/</span>
+      </li>
+      <li>
+        <a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a>
+        <span class="divider">/</span>
+      </li>
+      <li>
+        {% if original.pk %}
+          <a href="{% url opts|admin_urlname:'changelist' %}{{ original.pk }}">{{ original|capfirst|truncatewords:"18" }}</a>
+        {% else %}
+          <a href="{% url opts|admin_urlname:'changelist' %}{{ object.pk }}">{{ object|capfirst|truncatewords:"18" }}</a>
+        {% endif %}
+        <span class="divider">/</span>
+      </li>
+      <li class="active">{{breadcrumbs_action|capfirst|truncatewords:"25" }}</li>
+    </div>
 {% endif %}

@@ -3,14 +3,17 @@
 <ul class="breadcrumb">
     <li>
         <a href="{% url 'admin:index' %}" title="{% trans "Go back to admin homepage" %}">{% trans "Home" %}</a>
-        <span class="divider">&raquo;</span></li>
+        <span class="divider">&raquo;</span>
+    </li>
     <li>
         <a href="{% url 'admin:index' %}filer/" title="{% trans "Go back to Filer app" %}"> {% trans "Filer" %}</a>
     </li>
+    
     {% if instance.is_root and not instance.is_smart_folder %}{% else %}
         <li><span class="divider">&raquo;</span>
             <a href="{% url 'admin:filer-directory_listing-root' %}" title="{% trans "Go back to root folder" %}">{% trans "root" %}</a>
-        </li>{% endif %}
+        </li>
+    {% endif %}
 
     {% for ancestor_folder in instance.logical_path %}
         <li><span class="divider">&raquo;</span>

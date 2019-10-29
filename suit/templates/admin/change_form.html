@@ -3,9 +3,9 @@
 {% load url from suit_compat %}
 
 
-{% block extrahead %}{{ block.super }}
-{{ media }}
-
+{% block extrahead %}
+  {{ block.super }}
+  {{ media }}
 {% endblock %}
 
 
@@ -13,21 +13,21 @@
 {{ block.super }}
 
 {% if 'CONFIRM_UNSAVED_CHANGES'|suit_conf %}
-<!-- Warn on leaving unsaved form -->
-<script src="{% static 'suit/js/suit-form-confirm.js' %}"></script>
-<script type="text/javascript">
-  confirmExitIfModified('_form', '{% trans 'You have unsaved changes' %}.');
-</script>
+  <!-- Warn on leaving unsaved form -->
+  <script src="{% static 'suit/js/suit-form-confirm.js' %}"></script>
+  <script type="text/javascript">
+    confirmExitIfModified('_form', '{% trans 'You have unsaved changes' %}.');
+  </script>
 {% endif %}
 
 {% if adminform.model_admin.suit_form_tabs %}
-<script type="text/javascript">
-  (function ($) {
-    $(function () {
-      $('#suit_form_tabs').suit_form_tabs();
-    });
-  }(Suit.$))
-</script>
+  <script type="text/javascript">
+    (function ($) {
+      $(function () {
+        $('#suit_form_tabs').suit_form_tabs();
+      });
+    }(Suit.$))
+  </script>
 {% endif %}
 
 <script>
@@ -40,21 +40,19 @@
 
 {% endblock %}
 
-{% block extrastyle %}
-{{ block.super }}
-{% endblock %}
-
-{% block content_title_value %}
-{% trans 'Add' %} {{ opts.verbose_name }}
-{% endblock %}
-
+{% block content_title_value %} {% trans 'Add' %} {{ opts.verbose_name }} {% endblock %}
 {% block coltype %}{% if ordered_objects %}colMS{% else %}colM{% endif %}{% endblock %}
-
 {% block bodyclass %}{{ opts.app_label }}-{{ opts.object_name.lower }} change-form{% endblock %}
 
 {% block breadcrumbs %}
-  {% include "admin/includes/breadcrumbs.html" with nivel=3  %}
+  {% if add %}
+    {% trans 'Add' as breadcrumb_title %}
+    {% include "admin/includes/breadcrumbs.html" with nivel=2 breadcrumbs_action=breadcrumb_title|concatene:opts.verbose_name %}
+  {% else %}
+    {% include "admin/includes/breadcrumbs.html" with nivel=2 breadcrumbs_action=original %}
+  {% endif %}
 {% endblock %}
+
 
 
 {% block content %}

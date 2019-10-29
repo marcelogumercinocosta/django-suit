@@ -37,7 +37,7 @@
 {% block bodyclass %}change-list{% endblock %}
 
 {% block breadcrumbs %}
-  {% include "admin/includes/breadcrumbs.html" with nivel=2  %}
+    {% include "admin/includes/breadcrumbs.html" with nivel=1 breadcrumbs_action=cl.opts.verbose_name_plural%}
 {% endblock %}
 
 {% block coltype %}flex{% endblock %}

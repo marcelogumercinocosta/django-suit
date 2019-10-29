@@ -3,17 +3,8 @@
 {% load url from suit_compat %}
 
 {% block breadcrumbs %}
-  <ul class="breadcrumb">
-    <li><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
-      <span class="divider">|</span></li>
-    <li>
-      <a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst|escape }}</a>
-      <span class="divider">|</span></li>
-    <li><a href="
-        {% url opts|admin_urlname:'changelist' %}{{ object.pk }}">{{ object|truncatewords:"18" }}</a>
-      <span class="divider">|</span></li>
-    <li class="active">{% trans 'Delete' %}</li>
-  </ul>
+  {% trans 'Delete' as breadcrumb_title %}
+  {% include "admin/includes/breadcrumbs.html" with nivel=3 breadcrumbs_action=breadcrumb_title %}
 {% endblock %}
 
 {% block content %}
