@@ -8,10 +8,7 @@ from django.db import models
 from django.test import TestCase
 from django.utils.encoding import python_2_unicode_compatible
 from suit import utils
-from suit.templatetags.suit_tags import (admin_url,
-                                         field_contents_foreign_linked,
-                                         suit_bc, suit_bc_value, suit_conf,
-                                         suit_date, suit_time)
+from suit.templatetags.suit_tags import (admin_url, field_contents_foreign_linked, suit_bc, suit_bc_value, suit_conf, suit_date, suit_time)
 
 
 @python_2_unicode_compatible

@@ -82,8 +82,7 @@ class SuitListTestCase(UserTestCaseMixin, ModelsTestCaseMixin):
 
     def test_suit_list_headers_handler(self):
         result_headers = [{'class_attrib': ' class="test"'}, {}]
-        result = [{'class_attrib': ' class="test"'},
-                  {'class_attrib': ' class="name-column "'}]
+        result = [{'class_attrib': ' class="test"'}, {'class_attrib': ' class="name-column "'}]
         cl = ChangeListMock()
         self.assertEqual(headers_handler(result_headers, cl), result)
 
@@ -133,17 +132,11 @@ class SuitListTestCase(UserTestCaseMixin, ModelsTestCaseMixin):
 
     def test_suit_list_cells_handler(self):
         results = [
-            ['<td></td>', '<th class="test"></th>',
-             '<td><input class=""></td>'],
-            ['<td></td>', '<th class="test"></th>',
-             '<td><input class=""></td>'],
+            ['<td></td>', '<th class="test"></th>', '<td><input class=""></td>'],
+            ['<td></td>', '<th class="test"></th>', '<td><input class=""></td>'],
         ]
-        result = [['<td data="1" class="col-action_checkbox"></td>',
-                   '<td data="1" class="test"></td>',
-                   '<td data="1" class="col-order"><input class=""></td>'],
-                  ['<td data="2" class="col-action_checkbox"></td>',
-                   '<td data="2" class="test"></td>',
-                   '<td data="2" class="col-order"><input class=""></td>']]
+        result =    [['<td data="1" class="col-action_checkbox"></td>', '<td data="1" class="test"></td>', '<td data="1" class="col-order"><input class=""></td>'],
+                    ['<td data="2" class="col-action_checkbox"></td>', '<td data="2" class="test"></td>', '<td data="2" class="col-order"><input class=""></td>']]
         cl = ChangeListMock()
         result = cells_handler(results, cl)
         self.assertTrue('data="1"' in result[0][0])

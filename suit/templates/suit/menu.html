@@ -1,37 +1,60 @@
 {#{% load sitetree %}#}
 {% load i18n suit_menu %}
-{% load url from suit_compat %}
-
-<div class="left-nav" id="left-nav">
-  <ul>
-    {% block menu_home %}
-      {% url 'admin:index' as index_url %}
-      <li{% if index_url == request.path %} class="active"{% endif %}>
-        <a href="{{ index_url }}"><i class="icon-home"></i>{% trans 'Home' %}
+{% load static %}
+{% load suit_tags %}
+<nav id="sidebar" class="fixed-top">
+    <div class="sidebar-header">
+        <a href=" {% if user.is_authenticated %} {% url 'admin:index' %} {% else %}  {% url 'home' %} {% endif %}">
+            <h1 id="site-name">{% block branding %}{{ 'ADMIN_NAME'|suit_conf }}{% endblock %}</h1>
         </a>
-      </li>
-    {% endblock %}
-
-    {% get_menu request as app_list %}
-    {% if app_list %}
-      {% for app in app_list %}
-        {% if app.separator %}
-          <li class="separator"></li>
-        {% else %}
-          <li{{ app.is_active|yesno:' class=active,' }}>
-            <a href="{{ app.url }}"{{ app.blank|yesno:' target=_blank,' }}><i class="{% firstof app.icon 'icon-chevron-right' %}"></i>{% trans app.label|capfirst %}
-            </a>
-            {% if app.models %}
-              <ul>
-                {% for model in app.models %}
-                  <li{{ model.is_active|yesno:' class=active,' }}>
-                    <a href="{{ model.url }}"{{ model.blank|yesno:' target=_blank,' }}>{{ model.label }}</a></li>
-                {% endfor %}
-              </ul>
+    </div>
+    <ul class="list-unstyled components">
+        {% block menu_home %}
+            {% if  user.is_authenticated %}
+                {% url 'admin:index' as index_url %}
+                <li {% if index_url == request.path %} class="active" {% endif %}>
+                    <a href="{{ index_url }}"><i class="fa fa-home fa-lg pr-2"></i>{% trans 'Home' %}</a>
+                </li>
             {% endif %}
-          </li>
+        {% endblock %}
+        {% get_menu request as app_list %}
+        {% if app_list %}
+            {% for app in app_list %}
+                {% if app.not_authenticated and not user.is_authenticated  %}
+                    <li {{ app.is_active|yesno:' class=active,' }}>
+                        <a href="{{ app.url }}" {{ app.blank|yesno:' target=_blank,' }}>
+                            <i class="fa {% firstof app.icon %} fa-lg pr-2"></i>
+                            {{ app.label }}
+                        </a>
+                    </li>
+                {% elif app.separator  %}
+                    <li class="separator"></li>
+                {% else %}
+                    <li{{ app.is_active|yesno:' class=active,' }}>
+                    {% if app.models %}
+                        <a href="#{{app.label|get_for_one_noespace}}" class="sidebarCollapse" data-toggle="collapse" data-parent="#sidebar" aria-expanded="{{ app.is_active|yesno:'true,false' }}">
+                            <i class="fa {% firstof app.icon %} fa-lg pr-2"></i>
+                            {% trans app.label|capfirst %}
+                        </a>
+                        <ul class="collapse leftbar {{ app.is_active|yesno:'show,' }} list-unstyled " id="{{app.label|get_for_one_noespace}}">
+                            {% for model in app.models %}
+                                <li {% if request.path|get_menu_tree  == model.url %} class="active" {%endif%}>
+                                    <a href="{{ model.url }}" {{ model.blank|yesno:' target=_blank,' }}>{{ model.label }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    </li>
+                {% endif %}
+            {% endfor %}
         {% endif %}
-      {% endfor %}
-    {% endif %}
-  </ul>
-</div>
+    </ul>
+</nav>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.sidebarCollapse').on('click', function () {
+            $('#sidebar').collapse('hide');
+            $('.leftbar').collapse('hide');
+        });
+    });
+</script>

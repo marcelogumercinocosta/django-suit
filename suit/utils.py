@@ -12,8 +12,7 @@ def value_by_version(args):
     """
     version_map = args_to_dict(args)
     major_version = '.'.join(str(v) for v in django_major_version())
-    return version_map.get(major_version,
-                           list(version_map.values())[-1])
+    return version_map.get(major_version, list(version_map.values())[-1])
 
 
 def args_to_dict(args):

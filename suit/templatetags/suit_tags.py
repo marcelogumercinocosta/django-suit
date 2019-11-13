@@ -9,7 +9,6 @@ from django.utils.safestring import mark_safe
 from suit import utils
 from suit.config import get_config
 
-django_version = utils.django_major_version()
 register = template.Library()
 simple_tag = register.simple_tag
 
@@ -85,31 +84,6 @@ def admin_extra_filters(cl):
     return dict((k, v) for k, v in cl.params.items() if k not in used_parameters)
 
 
-@simple_tag
-def suit_django_version():
-    return django_version
-
-
-@register.filter
-def django_version_lt(string):
-    return django_version < str_to_version(string)
-
-
-@register.filter
-def django_version_lte(string):
-    return django_version <= str_to_version(string)
-
-
-@register.filter
-def django_version_gt(string):
-    return django_version > str_to_version(string)
-
-
-@register.filter
-def django_version_gte(string):
-    return django_version >= str_to_version(string)
-
-
 def str_to_version(string):
     return tuple([int(s) for s in string.split('.')])
 
@@ -143,3 +117,12 @@ def get_for_two_count(lista):
 @register.filter
 def concatene(value1,value2):
     return str(value1) + " " + str(value2)
+
+@register.filter
+def get_menu_tree(path):
+    array_path = path.split('/')
+    return ('/'.join(array_path[0:4]) + "/").replace("//", "/")
+
+@register.filter
+def get_for_one_noespace(name):
+    return name.replace(" ", "_")

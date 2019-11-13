@@ -26,13 +26,8 @@
         {% for action in action_list %}
         <tr>
             <th scope="row">{{ action.action_time|date:"DATETIME_FORMAT" }}</th>
-            {% if '1.10'|django_version_lt %}
-            <td>{{ action.user.username }}{% if action.user.get_full_name %} ({{ action.user.get_full_name }}){% endif %}</td>
-            <td>{{ action.change_message }}</td>
-            {% else %}
             <td>{{ action.user.get_username }}{% if action.user.get_full_name %} ({{ action.user.get_full_name }}){% endif %}</td>
             <td>{{ action.get_change_message }}</td>
-            {% endif %}
         </tr>
         {% endfor %}
         </tbody>

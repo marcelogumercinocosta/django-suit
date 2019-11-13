@@ -11,7 +11,6 @@ from suit import utils
 from suit.config import get_config
 
 register = template.Library()
-django_version = utils.django_major_version()
 simple_tag = register.simple_tag
 
 

@@ -4,20 +4,7 @@ from django.core.management import CommandError
 from django.core.management import call_command
 from django.test import TestCase
 from random import randint
-
-# Django 1.7 compatiblity
-try:
-    import django
-
-    django.setup()
-except AttributeError:
-    pass
-
-try:
-    from django.core.urlresolvers import reverse
-except ImportError:
-    # For Django >= 2.0
-    from django.urls import reverse
+from django.urls import reverse
 
 
 class UserTestCaseMixin(TestCase):
@@ -30,8 +17,7 @@ class UserTestCaseMixin(TestCase):
         self.client.login(username=self.superuser.username, password='password')
 
     def create_superuser(self):
-        return User.objects.create_superuser('admin-%s' % str(randint(1, 9999)),
-                                             'test@test.com', 'password')
+        return User.objects.create_superuser('admin-%s' % str(randint(1, 9999)), 'test@test.com', 'password')
 
     def create_user(self):
         user = User.objects.create_user('user-%s' % str(randint(1, 9999)),
@@ -59,13 +45,6 @@ class ModelsTestCaseMixin(TestCase):
             list(self.saved_INSTALLED_APPS) + [test_app]
         )
         settings.DEBUG = True
-
-        # Legacy Django < 1.9: load our fake application and syncdb
-        try:
-            from django.db.models.loading import load_app
-            load_app(test_app)
-        except ImportError:
-            pass
         try:
             call_command('syncdb', verbosity=0, interactive=False)
         except CommandError:

@@ -3,14 +3,7 @@ from django.contrib import admin
 
 
 def test_app_label():
-    """
-    Since Django 1.7 app_label while running tests is "suit"
-    instead of "tests" in Django < 1.7
-    """
-    try:
-        return Book._meta.app_label
-    except:
-        return 'tests'
+    return Book._meta.app_label
 
 
 class Book(models.Model):
