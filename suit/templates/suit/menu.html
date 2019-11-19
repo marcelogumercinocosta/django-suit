@@ -4,7 +4,7 @@
 {% load suit_tags %}
 <nav id="sidebar" class="fixed-top">
     <div class="sidebar-header">
-        <a href=" {% if user.is_authenticated %} {% url 'admin:index' %} {% else %}  {% url 'home' %} {% endif %}">
+        <a href=" {% if user.is_authenticated %} {% url 'admin:index' %} {% else %}  / {% endif %}">
             <h1 id="site-name">{% block branding %}{{ 'ADMIN_NAME'|suit_conf }}{% endblock %}</h1>
         </a>
     </div>
