@@ -1,0 +1,86 @@
+#accordion {
+	.panel {
+		background: @bgcolor-light;
+		border-radius: .25rem;
+		border: 1px solid rgba(0,0,0,.125);
+		border: none;
+		box-shadow: none;
+		margin-bottom: 15px;
+	}
+	.panel-heading {
+		border-radius:0;
+		border: none;
+		padding: 0;
+	}
+	.panel-title {
+		a {
+			background: @blue_header;
+			color: @white ;
+			display: block;
+			font-size: 16px;
+			overflow: hidden;
+			padding: 14px 30px 14px 70px;
+			position: relative;
+			transition: all 0.5s ease 0s;
+			&:before {
+				background-color: rgba(0, 0, 0, 0.1);
+				content: "";
+				height: 100%;
+				left: -13px;
+				position: absolute;
+				top: 0;
+				transform: skewX(-25deg);
+				transition: all 0.5s ease 0s;
+				width: 55px;
+			}
+			&:after {
+				color: @white ;
+				content: "\f007";
+				font-family: "Font Awesome 5 Free";
+				left: 10px;
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+			}
+		}
+		a.collapsed {
+			background: @bgcolor-light;
+			color: #000000;
+			&:hover {
+				color: @blue_header;
+				before {
+					background: @blue_header;
+				}
+				after {
+					color: @white ;
+				}
+			}
+			&:after {
+				color: @grey;
+			}
+		}
+	}
+	.panel-body {
+		border: none;
+		font-size: 14px;
+		line-height: 25px;
+		padding: 20px 15px 20px 40px;
+		position: relative;
+		transition: all 0.5s ease 0s;
+		img.graphimage {
+			margin-bottom: 5px;
+		}
+		&:before {
+			background: @blue_sidebar;
+			content: "";
+			height: 40px;
+			left: 0;
+			position: absolute;
+			top: 30px;
+			width: 5px;
+		}
+		p {
+			margin-bottom: 0;
+		}
+	}
+}
