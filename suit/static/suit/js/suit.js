@@ -35,7 +35,7 @@
                     scroll_top > (pos.top - 10) &&
                     $fixed_item.height() < $win.height()) {
                     !$fixed_item.hasClass('fixed') && $fixed_item.addClass('fixed');
-                    var max_top = Math.min(10, $(document).height() - $fixed_item.height() - scroll_top - extra_offset);
+                    var max_top = Math.min(70, $(document).height() - $fixed_item.height() - scroll_top - extra_offset);
                     $fixed_item.css('top', max_top + 'px');
                 }
                 else if (scroll_top <= (pos.top - 10) &&
@@ -176,7 +176,7 @@
             submitting = true;
             $saveButtons.addClass('disabled');
 
-            setTimeout(()  => {
+            setTimeout(() => {
                 $saveButtons.removeClass('disabled');
                 submitting = false;
             }, 5000);
@@ -196,4 +196,4 @@
 
     });
 
-});
+}(Suit.$));

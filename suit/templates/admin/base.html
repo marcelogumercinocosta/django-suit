@@ -10,10 +10,15 @@
     <link rel="stylesheet" type="text/css" href="{% static 'suit/bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'suit/css/suit.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'suit/css/ajustes.css' %}">
+    <link rel="shortcut icon" type='image/x-icon' href="{% static 'image/favicon.ico' %}">
     {% block extrastyle %}{% endblock %}
     <script src="{% static 'suit/js/jquery-3.3.1.min.js' %}" type="application/javascript"></script>
     <script src="{% static 'suit/bootstrap/js/popper.min.js' %}" type="application/javascript"></script>
     <script src="{% static 'suit/bootstrap/js/bootstrap.min.js' %}" type="application/javascript"></script>
+    <script type="text/javascript">
+      var Suit = { $: $.noConflict() }; if (!$) $ = Suit.$; 
+    </script>
+    {% block extrahead %}{% endblock %}
 </head>
 {% load i18n %}
 <body class="{% block bodyclass %}{% endblock %}">
