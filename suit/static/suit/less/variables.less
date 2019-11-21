@@ -3,7 +3,7 @@
 @footer-bgcolor: #D5D7D8;
 @bgcolor-light: #F6F7F8;
 @text-color: #333;
-@wite : #fff;
+@white : #fff;
 
 // Colors
 @grey: #999;
@@ -82,10 +82,8 @@ h1.site-name-azul {
 select {
 	-moz-appearance: none;
 	-webkit-appearance: none;
-	appearance: none;
 	border-radius: .25rem;
 	border: 1px solid @footer-bgcolor;
-	color: #495057;
 	display: inline-block;
 	font-size: 1rem;
 	font-weight: 400;
@@ -93,7 +91,9 @@ select {
 	line-height: 1.5;
 	padding: .275rem 1.75rem .375rem .75rem;
 	vertical-align: middle;
+	background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right .75rem center/8px 10px @white;
 }
+
 input[type="text"], input[type="number"], input[type="url"], input[type="email"], input[type="text"].vDateField, input[type="text"].vTimeField  {
 	border-radius: .25rem;
 	border: 1px solid @footer-bgcolor;
