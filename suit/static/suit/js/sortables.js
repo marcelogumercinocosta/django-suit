@@ -120,7 +120,7 @@
             } else {
                 var $input = $(input);
                 if ($input.hasClass('suit-sortable')) {
-                    if (input.defaultValue == input.value && input.value == 0) {
+                    if (input.defaultValue == input.value && input.value === 0) {
                         return false;
                     }
                 } else if (!$input.val()) {

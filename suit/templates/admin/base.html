@@ -15,9 +15,6 @@
     <script src="{% static 'suit/js/jquery-3.3.1.min.js' %}" type="application/javascript"></script>
     <script src="{% static 'suit/bootstrap/js/popper.min.js' %}" type="application/javascript"></script>
     <script src="{% static 'suit/bootstrap/js/bootstrap.min.js' %}" type="application/javascript"></script>
-    <script type="text/javascript">
-      var Suit = { $: $.noConflict() }; if (!$) $ = Suit.$; 
-    </script>
     {% block extrahead %}{% endblock %}
 </head>
 {% load i18n %}
