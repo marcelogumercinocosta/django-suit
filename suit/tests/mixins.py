@@ -14,14 +14,14 @@ class UserTestCaseMixin(TestCase):
     def login_superuser(self):
         if not self.superuser:
             self.superuser = self.create_superuser()
-        self.client.login(username=self.superuser.username, password='password')
+        # file deepcode ignore NoHardcodedPasswords: tests
+        self.client.login(username=self.superuser.username, password='Senha123.')
 
     def create_superuser(self):
-        return User.objects.create_superuser('admin-%s' % str(randint(1, 9999)), 'test@test.com', 'password')
+        return User.objects.create_superuser('admin-%s' % str(randint(1, 9999)), 'test@test.com', 'Senha123.')
 
     def create_user(self):
-        user = User.objects.create_user('user-%s' % str(randint(1, 9999)),
-                                        'test2@test2.com', 'password')
+        user = User.objects.create_user('user-%s' % str(randint(1, 9999)), 'test2@test2.com', 'Senha123.')
         user.is_staff = True
         user.save()
         return user
@@ -29,7 +29,8 @@ class UserTestCaseMixin(TestCase):
     def login_user(self):
         if not self.user:
             self.user = self.create_user()
-        self.client.login(username=self.user.username, password='password')
+        # file deepcode ignore NoHardcodedPasswords: tests
+        self.client.login(username=self.user.username, password='Senha123.')
 
     def get_response(self, url=None):
         url = url or reverse('admin:index')
